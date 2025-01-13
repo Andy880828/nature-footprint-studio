@@ -88,7 +88,7 @@ const toggleMobileMenu = () => {
             </div>
             <!-- 頁面 -->
             <div class="flex-1 justify-center hidden md:flex">
-                <ul class="flex items-center gap-10 text-white text-lg">
+                <ul class="flex items-center md:gap-5 xl:gap-10 2xl:gap-20 text-white text-lg">
                     <li>
                         <NuxtLink
                             to="/business"

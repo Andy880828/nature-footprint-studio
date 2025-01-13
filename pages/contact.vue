@@ -1,11 +1,9 @@
 <script setup></script>
 
 <template>
-    <Navbar />
-    <div class="container mt-24">
-        <slot />
+    <div>
+        <h1>contact</h1>
     </div>
-    <Footer />
 </template>
 
 <style lang="css" scoped></style>

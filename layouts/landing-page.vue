@@ -203,10 +203,9 @@ onMounted(() => {
             </div>
         </div>
     </div>
-    <navbar :showNavbar="showNavbar" />
-    <div class="container mx-auto md:mx-[10%]">
-        <slot />
-    </div>
+    <Navbar :showNavbar="showNavbar" />
+    <slot />
+    <Footer />
 </template>
 
 <style lang="css" scoped>
