@@ -1,4 +1,10 @@
 <script setup>
+const props = defineProps({
+    showNavbar: {
+        type: Boolean,
+        default: true,
+    },
+});
 const isOpen = ref(false);
 const toggleMobileMenu = () => {
     isOpen.value = !isOpen.value;
@@ -6,7 +12,13 @@ const toggleMobileMenu = () => {
 </script>
 
 <template>
-    <header class="fixed top-0 left-0 right-0 w-full from-green-900 to-green-700 bg-gradient-to-r md:px-[10%]">
+    <header
+        class="fixed top-0 left-0 right-0 w-full from-green-900 to-green-700 bg-gradient-to-r md:px-[10%] z-50 transition-all duration-500 ease-in-out"
+        :class="[
+            'transform',
+            showNavbar ? 'translate-y-0 opacity-100 scale-100' : '-translate-y-full opacity-0 scale-95',
+        ]"
+    >
         <nav class="flex items-center p-2 gap-10">
             <!-- logo -->
             <NuxtLink to="/">

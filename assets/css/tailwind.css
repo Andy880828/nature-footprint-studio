@@ -14,3 +14,12 @@
         scrollbar-color: rgba(1, 1, 1, 0.3) transparent;
     }
 }
+
+@layer utilities {
+    .bg-cover {
+        will-change: background-image;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translateZ(0) scale(1, 1);
+        transform: translateZ(0);
+    }
+}

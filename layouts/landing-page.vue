@@ -3,6 +3,26 @@ import bg1 from './assets/images/bg-landing-1.jpg';
 import bg2 from './assets/images/bg-landing-2.jpg';
 import bg3 from './assets/images/bg-landing-3.jpg';
 
+// 向下滾動出現navbar
+const showNavbar = ref(false);
+
+// 響應式Menu
+const isOpen = ref(false);
+const toggleMobileMenu = () => {
+    isOpen.value = !isOpen.value;
+};
+
+// 背景圖片
+const bgArr = [bg1, bg2, bg3];
+const bgCounter = ref(0);
+const changeBg = () => {
+    if (bgCounter.value === 2) {
+        bgCounter.value = 0;
+    } else {
+        bgCounter.value = bgCounter.value + 1;
+    }
+};
+
 onMounted(() => {
     // 預加載圖片
     bgArr.forEach((src) => {
@@ -18,21 +38,16 @@ onMounted(() => {
     onUnmounted(() => {
         clearInterval(intervalId);
     });
-});
 
-const bgArr = [bg1, bg2, bg3];
-const bgCounter = ref(0);
-const isOpen = ref(false);
-const toggleMobileMenu = () => {
-    isOpen.value = !isOpen.value;
-};
-const changeBg = () => {
-    if (bgCounter.value === 2) {
-        bgCounter.value = 0;
-    } else {
-        bgCounter.value = bgCounter.value + 1;
-    }
-};
+    // 向下滾動出現navbar
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 180) {
+            showNavbar.value = true;
+        } else {
+            showNavbar.value = false;
+        }
+    });
+});
 </script>
 
 <template>
@@ -157,7 +172,7 @@ const changeBg = () => {
                         </div>
                         <div class="flex flex-col gap-3 md:gap-5 items-center md:items-start justify-center">
                             <h1 class="text-white text-5xl md:text-7xl lg:text-8xl font-bold">話蛇天足</h1>
-                            <h1 class="text-white text-5xl md:text-7xl lg:text-8xl font-bold">工作室</h1>
+                            <h1 class="text-white text-4xl md:text-6xl lg:text-7xl font-bold">工作室</h1>
                             <h1 class="text-white text-2xl md:text-3xl lg:text-4xl font-bold">
                                 Nature's Footprint Studio
                             </h1>
@@ -165,7 +180,7 @@ const changeBg = () => {
                     </div>
                     <div class="flex flex-col items-center justify-center gap-5 md:gap-10 mt-5 md:mt-0">
                         <h1 class="text-white text-xl md:text-3xl lg:text-4xl text-center md:text-left">
-                            「 探索自然奧秘，追尋天地之足跡。 」
+                            「 探索自然奧秘，追尋天地足跡。 」
                         </h1>
                         <!-- 工作詢問 -->
                         <div class="flex items-center justify-center text-center mt-5 md:mt-0">
@@ -188,7 +203,8 @@ const changeBg = () => {
             </div>
         </div>
     </div>
-    <div class="container mt-24">
+    <navbar :showNavbar="showNavbar" />
+    <div class="container mx-auto md:mx-[10%]">
         <slot />
     </div>
 </template>
@@ -223,13 +239,5 @@ const changeBg = () => {
         opacity: 1;
         transform: translateY(20px);
     }
-}
-
-/* 確保背景圖片平滑過渡 */
-.bg-cover {
-    will-change: background-image;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: translateZ(0) scale(1, 1);
-    transform: translateZ(0);
 }
 </style>
