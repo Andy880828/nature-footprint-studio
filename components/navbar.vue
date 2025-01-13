@@ -57,7 +57,7 @@ const toggleMobileMenu = () => {
                             <span>服務項目</span><span class="text-xs ms-2">Service</span>
                         </div>
                     </NuxtLink>
-                    <NuxtLink to="/"
+                    <NuxtLink to="/about"
                         ><div class="p-4 py-auto transition-colors hover:bg-white/10">
                             <span>創辦人介紹</span><span class="text-xs ms-2">About</span>
                         </div>
@@ -88,7 +88,7 @@ const toggleMobileMenu = () => {
             </div>
             <!-- 頁面 -->
             <div class="flex-1 justify-center hidden md:flex">
-                <ul class="flex items-center md:gap-5 xl:gap-10 2xl:gap-20 text-white text-lg">
+                <ul class="flex items-center md:gap-5 xl:gap-10 2xl:gap-20 text-white text-md lg:text-lg">
                     <li>
                         <NuxtLink
                             to="/business"
@@ -100,7 +100,7 @@ const toggleMobileMenu = () => {
                     </li>
                     <li>
                         <NuxtLink
-                            to="/"
+                            to="/about"
                             class="flex flex-col items-center hover:scale-105 hover:text-green-500 transition-all duration-200"
                         >
                             <p>創辦人介紹</p>

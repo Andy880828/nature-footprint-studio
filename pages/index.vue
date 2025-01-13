@@ -11,16 +11,16 @@ definePageMeta({
         <div class="relative container mx-auto py-20 z-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 justify-center items-center p-4">
                 <div class="flex flex-col items-center justify-center p-6 bg-white/50 rounded-lg shadow-lg">
-                    <img src="assets/images/icon.svg" class="size-20 mb-4" alt="" />
-                    <span class="text-xl font-bold">生態課程</span>
+                    <span class="material-symbols-rounded text-8xl mb-4"> school </span>
+                    <span class="text-3xl font-bold">生態課程</span>
                 </div>
                 <div class="flex flex-col items-center justify-center p-6 bg-white/50 rounded-lg shadow-lg">
-                    <img src="assets/images/icon.svg" class="size-20 mb-4" alt="" />
-                    <span class="text-xl font-bold">生態導覽</span>
+                    <span class="material-symbols-rounded text-8xl mb-4"> mystery </span>
+                    <span class="text-3xl font-bold">生態導覽</span>
                 </div>
                 <div class="flex flex-col items-center justify-center p-6 bg-white/50 rounded-lg shadow-lg">
-                    <img src="assets/images/icon.svg" class="size-20 mb-4" alt="" />
-                    <span class="text-xl font-bold">田野調查</span>
+                    <span class="material-symbols-rounded text-8xl mb-4"> landscape </span>
+                    <span class="text-3xl font-bold">田野調查</span>
                 </div>
             </div>
         </div>

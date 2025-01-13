@@ -75,7 +75,7 @@ onMounted(() => {
                     </li>
                     <li>
                         <NuxtLink
-                            to="/"
+                            to="/about"
                             class="flex flex-col items-center hover:scale-105 hover:text-green-500 transition-all duration-200"
                         >
                             <p>創辦人介紹</p>
