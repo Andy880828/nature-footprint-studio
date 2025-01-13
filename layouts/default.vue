@@ -2,7 +2,7 @@
 
 <template>
     <Navbar />
-    <div class="container mt-24">
+    <div class="mt-24 min-h-screen">
         <slot />
     </div>
     <Footer />

@@ -2,7 +2,7 @@
 import bg from './assets/images/bg-footer.jpg';
 import facebook from './assets/images/icon-facebook.svg';
 import instagram from './assets/images/icon-instagram.svg';
-import x from './assets/images/icon-x.svg';
+import threads from './assets/images/icon-threads.svg';
 </script>
 
 <template>
@@ -36,9 +36,9 @@ import x from './assets/images/icon-x.svg';
                         alt="Instagram"
                     />
                     <img
-                        :src="x"
-                        class="size-12 md:size-16 brightness-0 invert hover:opacity-80 transition-opacity cursor-pointer"
-                        alt="X"
+                        :src="threads"
+                        class="size-[2.35rem] md:size-[3.1rem] brightness-100 invert hover:opacity-80 transition-opacity cursor-pointer"
+                        alt="Threads"
                     />
                 </div>
                 <p class="text-white text-center text-md">Copyright © 2025 話蛇天足工作室</p>
