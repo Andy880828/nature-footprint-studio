@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     compatibilityDate: '2024-11-01',
     devtools: { enabled: true },
-    modules: ['@nuxt/ui', '@nuxtjs/supabase'],
+    modules: ['@nuxt/ui'],
     app: {
         head: {
             title: '話蛇天足工作室',
@@ -22,6 +22,12 @@ export default defineNuxtConfig({
                         '一起探索自然的饋贈，提供生態專業服務，包括兩棲爬蟲、魚類、十足類、鳥類相關的生態課程，也提供生態調查及夜間導覽服務，歡迎進入網頁參訪',
                 },
             ],
+        },
+    },
+    runtimeConfig: {
+        public: {
+            supabaseUrl: process.env.SUPABASE_URL,
+            supabaseKey: process.env.SUPABASE_KEY,
         },
     },
 });
