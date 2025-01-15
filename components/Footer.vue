@@ -10,6 +10,13 @@ import threads from './assets/images/icon-threads.svg';
         :style="{ backgroundImage: `url(${bg})` }"
         class="relative w-full h-[150px] rounded-t-3xl bg-cover bg-center overflow-hidden"
     >
+        <NuxtLink to="/login">
+            <div
+                class="absolute bottom-5 right-5 size-10 rounded-full bg-black text-gray-900 hover:scale-105 hover:text-white transition-all duration-200 cursor-pointer z-50 flex items-center justify-center"
+            >
+                <UIcon name="i-material-symbols-settings-alert" class="size-6" />
+            </div>
+        </NuxtLink>
         <div class="absolute inset-0 bg-black opacity-50 rounded-t-3xl"></div>
         <div class="grid grid-cols-1 gap-2 md:grid-cols-2 place-items-center relative z-10 p-8 h-full">
             <NuxtLink to="/">

@@ -1,5 +1,6 @@
 <script setup>
 import bg1 from '~/assets/images/bg-section-1.jpg';
+import bcrypt from 'bcryptjs';
 definePageMeta({
     layout: 'landing-page',
 });
@@ -19,16 +20,14 @@ console.log(news);
                 <UIcon name="i-mingcute-news-fill" class="size-12" />最新消息
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center justify-center p-6">
-                <div class="flex flex-col gap-4 items-center justify-center">
-                    <div
-                        v-for="item in news"
-                        :key="item.id"
-                        class="bg-white/50 rounded-lg shadow-lg p-4 flex flex-col gap-2 items-center justify-center min-h-[300px]"
-                    >
-                        <img :src="item.picture" alt="news-picture" class="w-full h-full object-cover" />
-                        <p class="text-xl font-bold">{{ item.title }}</p>
-                        <p class="text-md text-gray-500">{{ item.brief }}</p>
-                    </div>
+                <div
+                    v-for="item in news"
+                    :key="item.id"
+                    class="bg-white/50 rounded-lg shadow-lg p-4 flex flex-col gap-2 items-center justify-center min-h-[300px]"
+                >
+                    <img :src="item.picture" alt="news-picture" class="w-full h-full object-cover" />
+                    <p class="text-xl font-bold">{{ item.title }}</p>
+                    <p class="text-md text-gray-500">{{ item.brief }}</p>
                 </div>
             </div>
         </div>

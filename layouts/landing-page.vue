@@ -55,7 +55,7 @@ onMounted(() => {
         <!-- 背景圖片 -->
         <div
             :style="{ backgroundImage: `url(${bgArr[bgCounter]})` }"
-            class="absolute inset-0 bg-cover bg-top bg-fixed z-0 transition-all duration-1000"
+            class="absolute inset-0 bg-cover bg-top z-0 transition-all duration-1000"
         ></div>
         <!-- 暗色遮罩層 -->
         <div class="absolute inset-0 bg-black/70 z-[1]"></div>
