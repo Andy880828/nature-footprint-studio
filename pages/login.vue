@@ -55,7 +55,8 @@ const validate = async () => {
         // 取得密碼
         const { data: users, error } = await supabase
             .from('users')
-            .select('email, hashed_password')
+            .select('email, hashed_password, is_editor')
+            .eq('is_editor', true)
             .eq('email', email.value);
         // 錯誤處理
         if (error) {
@@ -80,7 +81,7 @@ const validate = async () => {
 </script>
 
 <template>
-    <section class="bg-green-100">
+    <section class="bg-green-50">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
             <p class="text-center mb-6 text-3xl font-semibold text-gray-900">話蛇天足工作室 - 管理系統</p>
             <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">

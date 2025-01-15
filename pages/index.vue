@@ -1,6 +1,5 @@
 <script setup>
 import bg1 from '~/assets/images/bg-section-1.jpg';
-import bcrypt from 'bcryptjs';
 definePageMeta({
     layout: 'landing-page',
 });

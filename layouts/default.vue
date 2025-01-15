@@ -2,7 +2,7 @@
 
 <template>
     <Navbar />
-    <div class="md:mt-[4.5rem] min-h-screen">
+    <div class="mt-[3.7rem] md:mt-[4.5rem] min-h-screen">
         <slot />
     </div>
     <Footer />
