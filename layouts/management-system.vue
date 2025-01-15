@@ -58,15 +58,15 @@ const handleLogout = () => {
     <div class="flex relative">
         <!-- 左側白色側欄 -->
         <aside
-            class="fixed left-0 top-[3.7rem] md:top-[4.5rem] w-64 h-full bg-white shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out border-r border-gray-200 z-30"
+            class="absolute left-0 top-[3.7rem] md:top-[4.5rem] w-64 h-screen bg-white shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out border-r border-gray-200 z-30"
         >
             <nav class="p-4">
                 <ul class="space-y-2">
                     <li>
                         <NuxtLink
-                            to="/management/pictures"
+                            to="/managementSystem/pictures"
                             class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-all duration-200 text-gray-700 hover:text-gray-900 hover:shadow-sm active:bg-gray-200 font-medium text-md"
-                            active-class="bg-gray-100 text-gray-900 shadow-sm"
+                            active-class="bg-gray-200 text-gray-900 shadow-sm"
                         >
                             <UIcon name="i-material-symbols-animated-images-outline" class="size-5 mr-2" />
                             首頁輪播圖片管理
@@ -74,9 +74,9 @@ const handleLogout = () => {
                     </li>
                     <li>
                         <NuxtLink
-                            to="/management/news"
+                            to="/managementSystem/news"
                             class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-all duration-200 text-gray-700 hover:text-gray-900 hover:shadow-sm active:bg-gray-200 font-medium text-md"
-                            active-class="bg-gray-100 text-gray-900 shadow-sm"
+                            active-class="bg-gray-200 text-gray-900 shadow-sm"
                         >
                             <UIcon name="i-material-symbols-breaking-news-rounded" class="size-5 mr-2" />
                             最新消息管理
@@ -84,9 +84,9 @@ const handleLogout = () => {
                     </li>
                     <li>
                         <NuxtLink
-                            to="/management/blogs"
+                            to="/managementSystem/blogs"
                             class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-all duration-200 text-gray-700 hover:text-gray-900 hover:shadow-sm active:bg-gray-200 font-medium text-md"
-                            active-class="bg-gray-100 text-gray-900 shadow-sm"
+                            active-class="bg-gray-200 text-gray-900 shadow-sm"
                         >
                             <UIcon name="i-mdi-blogger" class="size-5 mr-2" />
                             部落格管理
@@ -94,9 +94,9 @@ const handleLogout = () => {
                     </li>
                     <li>
                         <NuxtLink
-                            to="/management/products"
+                            to="/managementSystem/products"
                             class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-all duration-200 text-gray-700 hover:text-gray-900 hover:shadow-sm active:bg-gray-200 font-medium text-md"
-                            active-class="bg-gray-100 text-gray-900 shadow-sm"
+                            active-class="bg-gray-200 text-gray-900 shadow-sm"
                         >
                             <UIcon name="i-icon-park-outline-ad-product" class="size-5 mr-2" />
                             商品管理
