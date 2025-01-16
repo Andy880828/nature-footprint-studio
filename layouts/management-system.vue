@@ -55,10 +55,12 @@ const handleLogout = () => {
             </div>
         </div>
     </UModal>
-    <div class="flex relative">
-        <!-- 左側白色側欄 -->
+
+    <!-- 主要布局容器 -->
+    <div class="flex min-h-screen bg-green-50">
+        <!-- 側邊欄 -->
         <aside
-            class="absolute left-0 top-[3.7rem] md:top-[4.5rem] w-64 h-screen bg-white shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out border-r border-gray-200 z-30"
+            class="fixed md:sticky top-[3.7rem] md:top-[4.5rem] w-64 h-[calc(100vh-3.7rem)] md:h-[calc(100vh-4.5rem)] bg-white shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out border-r border-gray-200 z-30 overflow-y-auto"
         >
             <nav class="p-4">
                 <ul class="space-y-2">
@@ -103,7 +105,7 @@ const handleLogout = () => {
                         </NuxtLink>
                     </li>
 
-                    <!-- 添加登出按鈕 -->
+                    <!-- 登出按鈕 -->
                     <li class="mt-8">
                         <button
                             @click="isModalOpen = true"
@@ -117,7 +119,7 @@ const handleLogout = () => {
             </nav>
         </aside>
 
-        <!-- 漢堡選單按鈕 (手機版) -->
+        <!-- 漢堡選單按鈕 -->
         <button
             @click="isMenuOpen = !isMenuOpen"
             class="fixed bottom-6 right-6 md:hidden z-40 bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200 border border-gray-200"
@@ -125,14 +127,12 @@ const handleLogout = () => {
             側邊欄
         </button>
 
-        <!-- 右側內容區域 -->
-        <div
-            class="w-full flex-1 mt-[3.7rem] md:mt-[4.5rem] min-h-screen p-4 md:p-6 bg-green-50 transition-all duration-300"
-        >
-            <div class="max-w-7xl mx-auto">
+        <!-- 主要內容區域 -->
+        <main class="flex-1 mt-[3.7rem] md:mt-[4.5rem] p-4 md:p-6">
+            <div class="max-w-7xl mx-auto p-4">
                 <slot />
             </div>
-        </div>
+        </main>
     </div>
     <Footer />
 </template>
