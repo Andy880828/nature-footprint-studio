@@ -127,7 +127,7 @@ const handleLogout = () => {
 
         <!-- 右側內容區域 -->
         <div
-            class="w-full md:ml-64 flex-1 mt-[3.7rem] md:mt-[4.5rem] min-h-screen p-4 md:p-6 bg-green-50 transition-all duration-300"
+            class="w-full flex-1 mt-[3.7rem] md:mt-[4.5rem] min-h-screen p-4 md:p-6 bg-green-50 transition-all duration-300"
         >
             <div class="max-w-7xl mx-auto">
                 <slot />

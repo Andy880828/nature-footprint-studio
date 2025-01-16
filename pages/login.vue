@@ -50,8 +50,8 @@ const login = async () => {
 // 驗證帳密
 const validate = async () => {
     try {
-        // 利用我們寫好的 Composable 抓取 API 資料
-        const supabase = useSupabaseClient();
+        // 利用我們寫好的 utils 抓取 API 資料
+        const supabase = useSupabase();
         // 取得密碼
         const { data: users, error } = await supabase
             .from('users')

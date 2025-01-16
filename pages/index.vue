@@ -4,10 +4,9 @@ definePageMeta({
     layout: 'landing-page',
 });
 // 利用我們寫好的Composable抓取API資料
-const supabase = useSupabaseClient();
+const supabase = useSupabase();
 // 取得最新消息
-const { data: news, error } = await supabase.from('news').select('*');
-console.log(news);
+const { data: news } = await supabase.from('news').select('*');
 </script>
 
 <template>
