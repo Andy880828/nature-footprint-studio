@@ -3,8 +3,6 @@ definePageMeta({
     layout: 'management-system',
 });
 
-const { uploadFileToSupabase, getPublicUrlFromSupabase } = useSupabasePicture();
-
 const allPicturesArr = ref([]);
 const isInsertModalOpen = ref(false);
 const insertingPicture = ref({
@@ -19,13 +17,13 @@ const editingPicture = computed(() => {
 const isDeleteModalOpen = ref(false);
 const deletingPictureId = ref(null);
 
-// 獲取所有數據
+//// 獲取所有數據 ////
 const fetchAllPictures = async () => {
+    // useFetch返回的是一個Promise物件，解構得到裡面的data
     const { data } = await useFetch('/api/picture/fetch');
-    // 用data.value才能抓到資料
+    // 用data.value才能抓到資料，因為裡面的data是響應式資料，需要用.value提取
     return data.value;
 };
-
 // 初始化時設定資料
 allPicturesArr.value = await fetchAllPictures();
 
@@ -48,36 +46,50 @@ const insertPicture = () => {
 };
 const handleInsert = async () => {
     try {
-        // 處理檔案上傳
-        const formData = new FormData();
-        const fileInput = document.querySelector('input[type="file"]');
+        const fileInput = document.querySelector('#insertPicture');
         const file = fileInput.files[0];
         if (!file) {
             throw new Error('請選擇圖片');
         }
-        // 生成唯一的檔案名稱
-        const timestamp = new Date().getTime();
-        const fileName = `${timestamp}-${file.name}`;
+
+        const compressedFile = await imageCompression(file);
+
+        const formData = new FormData();
+        formData.append('file', compressedFile);
+
         // 上傳圖片到 Supabase Storage
-        const { data: uploadData, error: uploadError } = await uploadFileToSupabase(fileName, file);
-        if (uploadError) throw uploadError;
-        // 獲取圖片的公開 URL
-        const publicUrl = getPublicUrlFromSupabase(fileName);
+        let imageUrl;
+        try {
+            const response = await fetch('/api/uploadPicture', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await response.json();
+            imageUrl = data.url; // 假設 API 回傳 { url: "圖片網址" }
+        } catch (error) {
+            console.error('上傳失敗：', error);
+            throw error; // 向上拋出錯誤，中止後續操作
+        }
+
         // 將圖片資訊儲存到資料庫
         const { error: insertError } = await $fetch('/api/picture/insert', {
             method: 'POST',
             body: {
-                picture: publicUrl,
+                picture: imageUrl,
                 display: insertingPicture.value.display,
             },
         });
         if (insertError) throw insertError;
+
         // 重新獲取圖片列表
-        allPicturesArr.value = await useFetch('/api/picture/fetch');
+        const { data } = await useFetch('/api/picture/fetch');
+        allPicturesArr.value = data.value;
+
         // 關閉 Modal
         isInsertModalOpen.value = false;
     } catch (error) {
         console.error('上傳失敗:', error);
+        // 這裡可以加入錯誤提示給使用者
     }
 };
 
@@ -107,7 +119,12 @@ const handleDelete = async () => {
                 <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-4">新增輪播圖片</h3>
                 <div>
                     <label class="block text-lg font-medium text-gray-700 mb-1">加入以下圖片(建議使用.webp)</label>
-                    <input type="file" accept="image/*" class="w-full px-3 py-2 border border-gray-300 rounded-lg" />
+                    <input
+                        type="file"
+                        accept="image/*"
+                        id="insertPicture"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                    />
                 </div>
                 <div class="flex items-center mt-3">
                     <label for="display" class="block text-lg text-gray-700">顯示於首頁輪播</label>
