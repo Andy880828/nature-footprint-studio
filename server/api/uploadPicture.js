@@ -21,7 +21,6 @@ export default defineEventHandler(async (event) => {
         const { data, error } = await supabase.storage.from('pictures').upload(fileName, file.data, {
             contentType: file.type,
         });
-
         if (error) {
             throw createError({
                 statusCode: 400,
