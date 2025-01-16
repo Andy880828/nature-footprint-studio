@@ -1,6 +1,6 @@
 export default defineEventHandler(async (event) => {
     const supabase = useSupabase();
-    const { data: pictures, error } = await supabase.from('picture').select('*');
+    const { data, error } = await supabase.from('picture').select('*');
     if (error) {
         throw createError({
             statusCode: 500,
@@ -30,5 +30,5 @@ export default defineEventHandler(async (event) => {
         }
         return data;
     };
-    return pictures;
+    return data;
 });

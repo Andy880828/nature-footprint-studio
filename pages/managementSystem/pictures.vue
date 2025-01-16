@@ -14,37 +14,33 @@ const insertingPicture = ref({
 const isEditModalOpen = ref(false);
 const editingPictureId = ref(null);
 const editingPicture = computed(() => {
-    return allPictures.value.find((picture) => picture.id === editingPictureId.value);
+    return allPicturesArr.value.find((picture) => picture.id === editingPictureId.value);
 });
 const isDeleteModalOpen = ref(false);
 const deletingPictureId = ref(null);
 
 // 獲取所有數據
+const fetchAllPictures = async () => {
+    const { data } = await useFetch('/api/picture/fetch');
+    // 用data.value才能抓到資料
+    return data.value;
+};
+
+// 初始化時設定資料
 allPicturesArr.value = await fetchAllPictures();
+
 //// 分頁 ////
 const page = ref(1);
 const limit = ref(10); // 每頁顯示數量
 // 使用computed處理分頁
 const pictures = computed(() => {
-    if (!allPicturesArr.value) return [];
     const start = (page.value - 1) * limit.value;
     const end = start + limit.value;
-    // 返回分頁後的數據，slice切割取出該分頁內容
     return allPicturesArr.value.slice(start, end);
 });
 // 計算總頁數
-const pageTotal = computed(() => allPictures.value?.length || 0);
+const pageTotal = computed(() => allPicturesArr.value?.length || 0);
 const pageCount = computed(() => Math.ceil(pageTotal.value / limit.value));
-
-// 獲取所有數據
-const fetchAllPictures = async () => {
-    try {
-        return await useFetch('/api/picture/fetch');
-    } catch (error) {
-        console.error('獲取圖片列表失敗:', error.message || error);
-        return [];
-    }
-};
 
 //// 新增 ////
 const insertPicture = () => {
