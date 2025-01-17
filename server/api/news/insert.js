@@ -2,10 +2,12 @@ export default defineEventHandler(async (event) => {
     const supabase = useSupabase();
     // 從 request body 獲取數據
     const body = await readBody(event);
-    const { picture, display } = body;
-    const { data: insertData, error: insertError } = await supabase.from('picture').insert({
+    const { title, brief, content, picture } = body;
+    const { data: insertData, error: insertError } = await supabase.from('news').insert({
+        title: title,
+        brief: brief,
+        content: content,
         picture: picture,
-        display: display,
     });
 
     if (insertError) {
