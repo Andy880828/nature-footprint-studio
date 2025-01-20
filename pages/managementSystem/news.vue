@@ -1,7 +1,5 @@
 <script setup>
 import { useWindowSize } from '@vueuse/core';
-import { QuillEditor } from '@vueup/vue-quill';
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
 definePageMeta({
     layout: 'management-system',
 });
@@ -229,15 +227,10 @@ const handleDelete = async () => {
                     />
                 </div>
                 <div>
-                    <label class="block text-lg font-medium text-gray-700 mb-1">內容</label>
-                    <ClientOnly>
-                        <QuillEditor
-                            theme="snow"
-                            v-model:content="insertingNews.content"
-                            contentType="html"
-                            class="w-full px-3 py-2 bg-gray-100 border border-gray-300 text-gray-500"
-                        />
-                    </ClientOnly>
+                    <label class="block text-lg font-medium text-gray-700 mb-1"
+                        >內容(可上傳圖片，但檔名不可有中文)</label
+                    >
+                    <QuillEditor v-model="insertingNews.content" placeholder="請輸入消息內容..." />
                 </div>
                 <div>
                     <label class="block text-lg font-medium text-gray-700 mb-1">消息圖片(建議使用.webp)</label>
@@ -304,16 +297,10 @@ const handleDelete = async () => {
                         />
                     </div>
                     <div>
-                        <label class="block text-lg font-medium text-gray-700 mb-1">內容</label>
-                        <ClientOnly>
-                            <QuillEditor
-                                theme="snow"
-                                :content="editingNews.content"
-                                contentType="html"
-                                @update:content="editingNews.content = $event"
-                                class="w-full px-3 py-2 bg-gray-100 border border-gray-300 text-gray-500"
-                            />
-                        </ClientOnly>
+                        <label class="block text-lg font-medium text-gray-700 mb-1"
+                            >內容(可上傳圖片，但檔名不可有中文)</label
+                        >
+                        <QuillEditor v-model="editingNews.content" placeholder="請輸入消息內容..." />
                     </div>
                     <div>
                         <label class="block text-lg font-medium text-gray-700 mb-1">
@@ -381,15 +368,19 @@ const handleDelete = async () => {
             :loading="status === 'pending'"
             :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Loading...' }"
             :progress="{ color: 'primary', animation: 'carousel' }"
-            class="w-full mt-4"
+            class="w-full mt-4 overflow-x-auto max-w-[100vw]"
             :rows="news"
             :columns="columns"
             :ui="{
+                wrapper: 'relative w-full overflow-x-auto',
+                base: 'min-w-full table-fixed',
                 th: {
-                    base: 'text-center',
+                    base: 'text-center whitespace-nowrap',
+                    padding: 'px-2 py-2 md:px-3 md:py-3.5',
                 },
                 td: {
-                    base: 'text-center',
+                    base: 'text-center whitespace-nowrap',
+                    padding: 'px-2 py-2 md:px-3 md:py-3.5',
                 },
             }"
         >
@@ -428,16 +419,4 @@ const handleDelete = async () => {
     </div>
 </template>
 
-<style lang="css" scoped>
-:deep(.ql-editor) {
-    min-height: 200px;
-}
-:deep(.ql-toolbar.ql-snow) {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-:deep(.ql-container.ql-snow) {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-</style>
+<style lang="css" scoped></style>

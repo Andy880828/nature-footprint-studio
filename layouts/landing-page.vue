@@ -23,6 +23,18 @@ const changeBg = () => {
     }
 };
 
+// 添加 throttle 函數
+const throttle = (fn, delay) => {
+    let lastTime = 0;
+    return function (...args) {
+        const now = new Date().getTime();
+        if (now - lastTime >= delay) {
+            fn.apply(this, args);
+            lastTime = now;
+        }
+    };
+};
+
 onMounted(() => {
     // 預加載圖片
     bgArr.forEach((src) => {
@@ -35,17 +47,20 @@ onMounted(() => {
         changeBg();
     }, 5000);
 
-    onUnmounted(() => {
-        clearInterval(intervalId);
-    });
-
-    // 向下滾動出現navbar
-    window.addEventListener('scroll', () => {
+    // 使用 throttle 包裝滾動事件處理函數
+    const handleScroll = throttle(() => {
         if (window.scrollY > 180) {
             showNavbar.value = true;
         } else {
             showNavbar.value = false;
         }
+    }, 200); // 設定 200ms 的延遲
+
+    window.addEventListener('scroll', handleScroll);
+
+    onUnmounted(() => {
+        clearInterval(intervalId);
+        window.removeEventListener('scroll', handleScroll);
     });
 });
 </script>

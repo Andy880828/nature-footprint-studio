@@ -1,10 +1,10 @@
 <script setup>
 import { useWindowSize } from '@vueuse/core';
-import { QuillEditor } from '@vueup/vue-quill';
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
+
 definePageMeta({
     layout: 'management-system',
 });
+
 const allBlogsArr = ref([]);
 const status = ref('pending');
 const isInsertModalOpen = ref(false);
@@ -47,6 +47,9 @@ const columns = computed(() => {
 
     return baseColumns;
 });
+
+//定義category種類
+const categoryTypes = ['兩棲爬蟲類', '魚類', '等足類', '鳥類', '其它'];
 
 //// 獲取所有數據 ////
 const fetchAllBlogs = async () => {
@@ -167,7 +170,7 @@ const handleEdit = async () => {
         }
 
         // 更新資料庫
-        const { updateError } = await useFetch('/api/news/update', {
+        const { updateError } = await useFetch('/api/blog/update', {
             method: 'PUT',
             body: {
                 id: editingBlogId.value,
@@ -196,7 +199,7 @@ const deleteBlog = (id) => {
 };
 const handleDelete = async () => {
     try {
-        const { deleteError } = await useFetch('/api/news/delete', {
+        const { deleteError } = await useFetch('/api/blog/delete', {
             method: 'DELETE',
             body: {
                 id: deletingBlogId.value,
@@ -231,26 +234,16 @@ const handleDelete = async () => {
 
                 <div>
                     <label class="block text-lg font-medium text-gray-700 mb-1">類別</label>
-                    <input
-                        type="text"
-                        required
-                        v-model="insertingBlog.category"
-                        class="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-500"
-                    />
+                    <USelect v-model="insertingBlog.category" :options="categoryTypes" required class="w-full" />
                 </div>
                 <div>
-                    <label class="block text-lg font-medium text-gray-700 mb-1">內容</label>
-                    <ClientOnly>
-                        <QuillEditor
-                            theme="snow"
-                            v-model:content="insertingBlog.content"
-                            contentType="html"
-                            class="w-full px-3 py-2 bg-gray-100 border border-gray-300 text-gray-500"
-                        />
-                    </ClientOnly>
+                    <label class="block text-lg font-medium text-gray-700 mb-1"
+                        >內容(可上傳圖片，但檔名不可有中文)</label
+                    >
+                    <QuillEditor v-model="insertingBlog.content" placeholder="請輸入部落格內容..." />
                 </div>
                 <div>
-                    <label class="block text-lg font-medium text-gray-700 mb-1">連結</label>
+                    <label class="block text-lg font-medium text-gray-700 mb-1">連結(可不填，有報名連結建議填)</label>
                     <input
                         type="text"
                         v-model="insertingBlog.link"
@@ -313,27 +306,18 @@ const handleDelete = async () => {
 
                     <div>
                         <label class="block text-lg font-medium text-gray-700 mb-1">類別</label>
-                        <input
-                            type="text"
-                            required
-                            v-model="editingBlog.category"
-                            class="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-500"
-                        />
+                        <USelect v-model="editingBlog.category" :options="categoryTypes" required class="w-full" />
                     </div>
                     <div>
-                        <label class="block text-lg font-medium text-gray-700 mb-1">內容</label>
-                        <ClientOnly>
-                            <QuillEditor
-                                theme="snow"
-                                :content="editingBlog.content"
-                                contentType="html"
-                                @update:content="editingBlog.content = $event"
-                                class="w-full px-3 py-2 bg-gray-100 border border-gray-300 text-gray-500"
-                            />
-                        </ClientOnly>
+                        <label class="block text-lg font-medium text-gray-700 mb-1"
+                            >內容(可上傳圖片，但檔名不可有中文)</label
+                        >
+                        <QuillEditor v-model="editingBlog.content" placeholder="請輸入部落格內容..." />
                     </div>
                     <div>
-                        <label class="block text-lg font-medium text-gray-700 mb-1">連結</label>
+                        <label class="block text-lg font-medium text-gray-700 mb-1"
+                            >連結(可不填，有報名連結建議填)</label
+                        >
                         <input
                             type="text"
                             v-model="editingBlog.link"
@@ -406,15 +390,19 @@ const handleDelete = async () => {
             :loading="status === 'pending'"
             :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Loading...' }"
             :progress="{ color: 'primary', animation: 'carousel' }"
-            class="w-full mt-4"
+            class="w-full mt-4 overflow-x-auto max-w-[100vw]"
             :rows="blogs"
             :columns="columns"
             :ui="{
+                wrapper: 'relative w-full overflow-x-auto',
+                base: 'min-w-full table-fixed',
                 th: {
-                    base: 'text-center',
+                    base: 'text-center whitespace-nowrap',
+                    padding: 'px-2 py-2 md:px-3 md:py-3.5',
                 },
                 td: {
-                    base: 'text-center',
+                    base: 'text-center whitespace-nowrap',
+                    padding: 'px-2 py-2 md:px-3 md:py-3.5',
                 },
             }"
         >
@@ -453,16 +441,4 @@ const handleDelete = async () => {
     </div>
 </template>
 
-<style lang="css" scoped>
-:deep(.ql-editor) {
-    min-height: 200px;
-}
-:deep(.ql-toolbar.ql-snow) {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-:deep(.ql-container.ql-snow) {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-</style>
+<style lang="css" scoped></style>

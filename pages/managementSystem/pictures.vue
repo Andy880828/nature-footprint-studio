@@ -305,7 +305,7 @@ const handleDelete = async () => {
             :loading="status === 'pending'"
             :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Loading...' }"
             :progress="{ color: 'primary', animation: 'carousel' }"
-            class="w-full mt-4"
+            class="w-full mt-4 overflow-x-auto max-w-[100vw]"
             :rows="pictures"
             :columns="[
                 { key: 'id', label: 'ID' },
@@ -314,11 +314,15 @@ const handleDelete = async () => {
                 { key: 'action', label: '動作' },
             ]"
             :ui="{
+                wrapper: 'relative w-full overflow-x-auto',
+                base: 'min-w-full table-fixed',
                 th: {
-                    base: 'text-center',
+                    base: 'text-center whitespace-nowrap',
+                    padding: 'px-2 py-2 md:px-3 md:py-3.5',
                 },
                 td: {
-                    base: 'text-center',
+                    base: 'text-center whitespace-nowrap',
+                    padding: 'px-2 py-2 md:px-3 md:py-3.5',
                 },
             }"
         >
