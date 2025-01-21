@@ -233,7 +233,7 @@ const handleDelete = async () => {
 
                 <div>
                     <label class="block text-lg font-medium text-gray-700 mb-1">類別</label>
-                    <UAutocomplete
+                    <UInputMenu
                         v-model="insertingProduct.category"
                         :options="categoryTypes"
                         required
@@ -331,11 +331,20 @@ const handleDelete = async () => {
 
                     <div>
                         <label class="block text-lg font-medium text-gray-700 mb-1">類別</label>
-                        <input
-                            type="text"
-                            required
+                        <UInputMenu
                             v-model="editingProduct.category"
-                            class="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-500"
+                            :options="categoryTypes"
+                            required
+                            class="w-full"
+                            placeholder="輸入或選擇類別"
+                            :ui="{
+                                container: 'relative',
+                                input: 'w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-500',
+                                option: {
+                                    base: 'px-3 py-2 focus:bg-gray-100 hover:bg-gray-100 cursor-pointer',
+                                    selected: 'bg-gray-100',
+                                },
+                            }"
                         />
                     </div>
                     <div>
