@@ -1,8 +1,4 @@
 <script setup>
-import bg1 from './assets/images/bg-landing-1.jpg';
-import bg2 from './assets/images/bg-landing-2.jpg';
-import bg3 from './assets/images/bg-landing-3.jpg';
-
 // 向下滾動出現navbar
 const showNavbar = ref(false);
 
@@ -13,10 +9,13 @@ const toggleMobileMenu = () => {
 };
 
 // 背景圖片
-const bgArr = [bg1, bg2, bg3];
+const supabase = useSupabase();
+const { data: pictures } = await supabase.from('picture').select('*');
+console.log(pictures);
+const bgArr = pictures.map((picture) => picture.picture);
 const bgCounter = ref(0);
 const changeBg = () => {
-    if (bgCounter.value === 2) {
+    if (bgCounter.value === bgArr.length - 1) {
         bgCounter.value = 0;
     } else {
         bgCounter.value = bgCounter.value + 1;
@@ -70,7 +69,7 @@ onMounted(() => {
         <!-- 背景圖片 -->
         <div
             :style="{ backgroundImage: `url(${bgArr[bgCounter]})` }"
-            class="absolute inset-0 bg-cover bg-top z-0 transition-all duration-1000"
+            class="absolute inset-0 bg-cover bg-center z-0 transition-all duration-1000"
         ></div>
         <!-- 暗色遮罩層 -->
         <div class="absolute inset-0 bg-black/70 z-[1]"></div>
