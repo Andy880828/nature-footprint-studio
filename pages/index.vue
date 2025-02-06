@@ -16,6 +16,7 @@ const supabase = useSupabase();
 // fetch消息
 const { data: news } = await supabase.from('news').select('*').limit(5);
 const orderedNews = computed(() => {
+    if (!news) return []; // 添加空數組作為預設值
     return [...news].sort((a, b) => {
         const dateA = new Date(a.created_at);
         const dateB = new Date(b.created_at);
@@ -68,7 +69,7 @@ const faqItems = [
     {
         label: '活動有年齡限制嗎？',
         icon: 'i-material-symbols-child-care',
-        content: '活動基本上沒有年齡限制，但一般戶外活動(如:夜間生態導覽)建議七歲以上孩童參加，建議您在預約時詢問。',
+        content: '活動基本上沒有年齡限制，但一般戶外活動(如:夜間生態導覽)建議七歲以上孩童參加，推薦您在預約時詢問。',
     },
     {
         label: '需要準備什麼裝備？',
@@ -84,11 +85,11 @@ const faqItems = [
     {
         label: '可以攜帶寵物參加活動嗎？',
         icon: 'i-material-symbols-pets',
-        content: '為了確保活動品質及安全，一般活動不建議攜帶寵物。如有特殊需求，請先與我們聯繫討論。',
+        content: '為了確保活動品質及安全，一般活動不建議攜帶寵物。如有特殊需求，請先聯繫討論。',
     },
     {
         label: '球蟒應該如何訂購？',
-        icon: 'i-material-symbols-pets',
+        icon: 'i-mdi-snake',
         content: '球蟒的購買請直接聯繫並告知編號，後續將進行議價與交貨方式確認。',
     },
 ];
@@ -96,7 +97,7 @@ const faqItems = [
 
 <template>
     <!-- 最新消息 -->
-    <section :style="{ backgroundImage: `url(${bg1})` }" class="relative py-20 overflow-hidden bg-cover bg-center z-0">
+    <section :style="{ backgroundImage: `url(${bg1})` }" class="relative py-16 overflow-hidden bg-cover bg-center z-0">
         <div class="absolute inset-0 bg-white opacity-80 z-[1]"></div>
         <div class="relative container px-4 mx-auto z-[2]">
             <div class="max-w-2xl mx-auto mb-4 text-center">
@@ -134,13 +135,13 @@ const faqItems = [
                             </div>
                         </div>
                         <div class="shrink-0">
-                            <a
+                            <NuxtLink
                                 class="inline-flex items-center text-base sm:text-xl font-semibold text-green-900 hover:text-gray-900 whitespace-nowrap"
-                                href="#"
+                                :to="`/news/${news.id}`"
                             >
                                 <span class="mr-1">閱讀更多</span>
                                 <UIcon name="i-material-symbols-arrow-outward" class="size-5 sm:size-6" />
-                            </a>
+                            </NuxtLink>
                         </div>
                     </div>
                 </div>
@@ -153,7 +154,7 @@ const faqItems = [
                     <div
                         class="absolute top-0 right-full size-full bg-green-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"
                     ></div>
-                    <span class="relative">所有消息</span>
+                    <span class="relative">更多消息</span>
                 </NuxtLink>
             </div>
         </div>
@@ -239,10 +240,22 @@ const faqItems = [
                 </div>
             </div>
         </div>
+        <div class="pt-12 text-center">
+            <NuxtLink
+                class="relative group inline-block ring-2 ring-green-900 ring-offset-2 py-3 px-6 font-semibold text-green-900 hover:text-white rounded-xl shadow-sm bg-white transition duration-300 overflow-hidden"
+                to="/business"
+            >
+                <div
+                    class="absolute top-0 right-full size-full bg-green-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"
+                ></div>
+                <span class="relative">更多介紹</span>
+            </NuxtLink>
+        </div>
     </section>
     <!-- 常見問題 -->
-    <section class="bg-[#EDF6EE]">
-        <div class="grid grid-cols-1 lg:grid-cols-2">
+    <section :style="{ backgroundImage: `url(${bg1})` }" class="relative bg-cover bg-center z-0">
+        <div class="absolute inset-0 bg-white opacity-80 z-[1]"></div>
+        <div class="relative z-[2] grid grid-cols-1 lg:grid-cols-2">
             <!-- 左側圖片 -->
             <div class="relative h-full overflow-hidden">
                 <img :src="bgFaq" class="absolute inset-0 w-full h-full object-cover" />
@@ -259,13 +272,10 @@ const faqItems = [
                         :items="faqItems"
                         :ui="{
                             wrapper: 'flex flex-col w-full',
+                            container: 'pt-4 w-full flex flex-col',
                             item: {
-                                base: 'overflow-hidden',
                                 padding: 'p-4',
                                 size: 'text-lg',
-                                trigger:
-                                    'p-4 w-full flex items-center gap-2 text-left bg-white hover:bg-gray-50 rounded-lg',
-                                panel: 'p-4 text-gray-600 bg-white/80 rounded-lg mt-2',
                             },
                         }"
                     >
@@ -273,7 +283,6 @@ const faqItems = [
                             <UButton
                                 color="gray"
                                 variant="ghost"
-                                class="border-b border-gray-200"
                                 :ui="{ rounded: 'rounded-none', padding: { sm: 'p-3' } }"
                             >
                                 <template #leading>
@@ -289,8 +298,8 @@ const faqItems = [
                                 <template #trailing>
                                     <UIcon
                                         name="i-heroicons-chevron-right-20-solid"
-                                        class="w-5 h-5 ms-auto transform transition-transform duration-200"
-                                        :class="[open && 'rotate-90']"
+                                        class="size-5 ms-auto transform transition-transform duration-200"
+                                        :class="{ 'rotate-90': open }"
                                     />
                                 </template>
                                 <template #item>
@@ -305,7 +314,21 @@ const faqItems = [
             </div>
         </div>
     </section>
-    <!-- 商品 -->
+    <!-- 創辦人的話 -->
+    <section class="py-10 md:py-20 relative z-0 overflow-hidden flex flex-col justify-center items-center">
+        <div class="container px-4 mx-auto rounded-full md:w-[50%]">
+            <img src="~/assets/images/founder.webp" alt="founder" class="w-full object-cover rounded-full" />
+        </div>
+        <blockquote class="mt-8 mb-4 pl-4 md:pl-8 py-4 mx-4 md:mx-10 text-center">
+            <p class="text-xl md:text-3xl font-bold">
+                『
+                "話"代表述說，"添"代表加入，話蛇添足，意味著不斷傳達野生動物的美好給大眾，我相信透過實際的探索與教育，可以讓更多人了解自然，進而珍惜我們的環境。
+                』
+            </p>
+        </blockquote>
+        <p class="text-gray-500 text-lg md:text-xl">陳軒齊</p>
+        <p class="text-gray-500 text-base md:text-lg mt-2">話蛇添足工作室 創辦人</p>
+    </section>
 </template>
 
 <style lang="css" scoped></style>

@@ -27,7 +27,7 @@ const toggleMobileMenu = () => {
                         <img src="assets/images/icon.svg" class="size-10" alt="" />
                     </div>
                     <div class="flex flex-col items-center">
-                        <span class="text-white text-xl font-bold">話蛇天足工作室</span>
+                        <span class="text-white text-xl font-bold">話蛇添足工作室</span>
                         <span class="text-white text-xs">Nature's Footprint Studio</span>
                     </div>
                 </div>

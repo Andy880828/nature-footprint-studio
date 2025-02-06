@@ -25,7 +25,7 @@ import threads from './assets/images/icon-threads.svg';
                         <img src="assets/images/icon.svg" class="size-16" alt="" />
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-white text-xl md:text-3xl font-bold">話蛇天足工作室</span>
+                        <span class="text-white text-xl md:text-3xl font-bold">話蛇添足工作室</span>
                         <span class="text-white text-xs md:text-sm">Nature's Footprint Studio</span>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ import threads from './assets/images/icon-threads.svg';
                         alt="Threads"
                     />
                 </div>
-                <p class="text-white text-center text-md">Copyright © 2025 話蛇天足工作室</p>
+                <p class="text-white text-center text-md">Copyright © 2025 話蛇添足工作室</p>
             </div>
         </div>
     </footer>

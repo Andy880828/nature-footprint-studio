@@ -18,7 +18,7 @@ definePageMeta({
         </div>
         <div class="max-w-2xl text-center">
             <p class="text-lg md:text-xl text-gray-600">
-                這裡是話蛇天足工作室的後台管理系統，您可以在這裡管理網站的內容，包括首頁輪播圖片、最新消息、部落格文章以及商品資訊。
+                這裡是話蛇添足工作室的後台管理系統，您可以在這裡管理網站的內容，包括首頁輪播圖片、最新消息、部落格文章以及商品資訊。
             </p>
         </div>
         <div class="flex flex-col md:flex-row gap-4 mt-4 text-center">

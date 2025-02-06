@@ -11,7 +11,6 @@ const toggleMobileMenu = () => {
 // 背景圖片
 const supabase = useSupabase();
 const { data: pictures } = await supabase.from('picture').select('*');
-console.log(pictures);
 const bgArr = pictures.map((picture) => picture.picture);
 const bgCounter = ref(0);
 const changeBg = () => {
@@ -185,7 +184,7 @@ onMounted(() => {
                             <img src="assets/images/icon.svg" alt="" />
                         </div>
                         <div class="flex flex-col gap-3 md:gap-5 items-center md:items-start justify-center">
-                            <h1 class="text-white text-5xl md:text-7xl lg:text-8xl font-bold">話蛇天足</h1>
+                            <h1 class="text-white text-5xl md:text-7xl lg:text-8xl font-bold">話蛇添足</h1>
                             <h1 class="text-white text-4xl md:text-6xl lg:text-7xl font-bold">工作室</h1>
                             <h1 class="text-white text-2xl md:text-3xl lg:text-4xl font-bold">
                                 Nature's Footprint Studio

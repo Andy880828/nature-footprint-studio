@@ -4,6 +4,12 @@
 @tailwind utilities;
 
 @layer base {
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+
     html {
         font-family: 'Nunito', 'Chocolate Classical Sans', system-ui, sans-serif;
         font-optical-sizing: auto;
