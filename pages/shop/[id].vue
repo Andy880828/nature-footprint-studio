@@ -1,9 +1,7 @@
 <script setup></script>
 
 <template>
-    <div>
-        <h1>Blog</h1>
-    </div>
+    <div></div>
 </template>
 
 <style lang="css" scoped></style>
