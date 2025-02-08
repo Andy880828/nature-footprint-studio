@@ -1,5 +1,5 @@
 <script setup>
-import bg1 from '~/assets/images/bg-section-1.jpg';
+import bg1 from '~/assets/images/bg-section-1.webp';
 import bgLeaf from '~/assets/images/leaf.svg';
 import business1 from '~/assets/images/business-1.webp';
 import business2 from '~/assets/images/business-2.webp';

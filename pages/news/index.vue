@@ -27,16 +27,10 @@ const pageTotal = computed(() => orderedNews.value?.length || 0);
 </script>
 
 <template>
+    <Hero title="最新消息" icon="i-material-symbols-breaking-news-rounded" />
     <div :style="{ backgroundImage: `url(${bgNews})` }" class="min-h-screen py-20 bg-cover bg-right-top">
         <!-- 標題區塊 -->
         <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto mb-12 text-center">
-                <h1 class="text-5xl font-bold flex items-center justify-center gap-2">
-                    <UIcon name="i-material-symbols-breaking-news-rounded" class="size-12" />最新消息
-                </h1>
-                <p class="mt-4 text-xl text-gray-600">了解我們的最新動態與活動資訊</p>
-            </div>
-
             <!-- 消息列表 -->
             <div class="max-w-5xl mx-auto space-y-6">
                 <div

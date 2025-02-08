@@ -25,13 +25,9 @@ const showedBlogs = computed(() => {
 </script>
 
 <template>
+    <Hero title="部落格" icon="i-mdi-blogger" />
     <section class="py-20 bg-gradient-to-b from-green-200 to-white">
         <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto mb-12 text-center">
-                <h1 class="text-5xl font-bold flex items-center justify-center gap-2">
-                    <UIcon name="i-mdi-blogger" class="size-12" />部落格
-                </h1>
-            </div>
             <!-- 搜尋/篩選 -->
             <div class="max-w-5xl mx-auto space-y-6">
                 <div class="flex justify-between items-center gap-4 bg-white/70 p-2 rounded-xl shadow-sm">
