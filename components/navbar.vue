@@ -9,11 +9,12 @@ const isOpen = ref(false);
 const toggleMobileMenu = () => {
     isOpen.value = !isOpen.value;
 };
+const route = useRoute();
 </script>
 
 <template>
     <header
-        class="fixed top-0 left-0 right-0 w-full from-green-900 to-green-700 bg-gradient-to-r md:px-[10%] z-50 transition-all duration-500 ease-in-out"
+        class="fixed top-0 left-0 right-0 w-full from-green-900 to-green-700 bg-gradient-to-r lg:px-[10%] z-50 transition-all duration-500 ease-in-out"
         :class="[
             'transform',
             showNavbar ? 'translate-y-0 opacity-100 scale-100' : '-translate-y-full opacity-0 scale-95',
@@ -33,7 +34,7 @@ const toggleMobileMenu = () => {
                 </div>
             </NuxtLink>
             <!-- 響應式Hamburger -->
-            <div class="ml-auto block cursor-pointer self-center pr-4 md:hidden">
+            <div class="ml-auto block cursor-pointer self-center pr-4 lg:hidden">
                 <!-- 用一個button當wrapper，給予id並使用group關鍵字 -->
                 <button @click="toggleMobileMenu" id="mobile-menu-button" class="group peer" :class="{ open: isOpen }">
                     <!-- 使用div配合bgColor來畫線 -->
@@ -87,12 +88,13 @@ const toggleMobileMenu = () => {
                 </div>
             </div>
             <!-- 頁面 -->
-            <div class="flex-1 justify-center hidden md:flex">
-                <ul class="flex items-center md:gap-5 xl:gap-10 2xl:gap-20 text-white text-md lg:text-lg">
+            <div class="flex-1 justify-center hidden lg:flex">
+                <ul class="flex items-center md:gap-5 xl:gap-12 2xl:gap-20 text-white text-md xl:text-lg">
                     <li>
                         <NuxtLink
                             to="/business"
                             class="flex flex-col items-center hover:scale-105 hover:text-green-500 transition-all duration-200"
+                            exact-active-class="text-green-300"
                         >
                             <p>服務項目</p>
                             <p class="text-xs">Service</p>
@@ -102,6 +104,7 @@ const toggleMobileMenu = () => {
                         <NuxtLink
                             to="/about"
                             class="flex flex-col items-center hover:scale-105 hover:text-green-500 transition-all duration-200"
+                            exact-active-class="text-green-300"
                         >
                             <p>創辦人介紹</p>
                             <p class="text-xs">About</p>
@@ -111,6 +114,7 @@ const toggleMobileMenu = () => {
                         <NuxtLink
                             to="/shop"
                             class="flex flex-col items-center hover:scale-105 hover:text-green-500 transition-all duration-200"
+                            exact-active-class="text-green-300"
                         >
                             <p>購物專區</p>
                             <p class="text-xs">Shop</p>
@@ -120,6 +124,7 @@ const toggleMobileMenu = () => {
                         <NuxtLink
                             to="/blog"
                             class="flex flex-col items-center hover:scale-105 hover:text-green-500 transition-all duration-200"
+                            exact-active-class="text-green-300"
                         >
                             <p>部落格</p>
                             <p class="text-xs">Blog</p>
@@ -129,15 +134,17 @@ const toggleMobileMenu = () => {
                         <NuxtLink
                             to="/contact"
                             class="flex flex-col items-center hover:scale-105 hover:text-green-500 transition-all duration-200"
+                            exact-active-class="text-green-300"
                         >
                             <p>聯絡資訊</p>
+
                             <p class="text-xs">Contact</p>
                         </NuxtLink>
                     </li>
                 </ul>
             </div>
             <!-- 工作詢問 -->
-            <div class="items-center gap-4 hidden md:flex">
+            <div class="items-center gap-4 hidden lg:flex">
                 <div
                     class="bg-white text-green-800 px-4 py-2 rounded-xl cursor-pointer text-lg hover:scale-105 hover:text-white hover:bg-green-800 transition-all duration-200"
                 >

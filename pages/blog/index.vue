@@ -26,42 +26,34 @@ const showedBlogs = computed(() => {
 
 <template>
     <Hero title="部落格" icon="i-mdi-blogger" />
-    <section class="py-20 bg-gradient-to-b from-green-200 to-white">
+    <section class="py-10 bg-gradient-to-b from-green-200 to-white">
         <div class="container mx-auto px-4">
-            <!-- 搜尋/篩選 -->
             <div class="max-w-5xl mx-auto space-y-6">
-                <div class="flex justify-between items-center gap-4 bg-white/70 p-2 rounded-xl shadow-sm">
-                    <div class="relative flex-1">
-                        <UIcon
-                            name="i-heroicons-magnifying-glass"
-                            class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 size-5"
-                        />
-                        <input
-                            type="text"
-                            v-model="search"
-                            placeholder="搜尋文章標題、內容..."
-                            class="w-full pl-11 pr-4 py-2 bg-gray-50/50 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-all"
-                        />
-                    </div>
-                    <div class="relative w-48">
-                        <select
-                            v-model="category"
-                            class="w-full appearance-none py-2 px-4 bg-gray-50/50 border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-all"
-                        >
-                            <option value="">所有分類</option>
-                            <option value="兩棲爬蟲類">兩棲爬蟲類</option>
-                            <option value="鳥類">鳥類</option>
-                            <option value="魚類">魚類</option>
-                            <option value="等足類">等足類</option>
-                            <option value="其它">其它</option>
-                        </select>
-                        <UIcon
-                            name="i-heroicons-chevron-down"
-                            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 size-5 pointer-events-none"
-                        />
-                    </div>
+                <!-- 搜尋/篩選區域 -->
+                <div class="flex justify-between items-center gap-4">
+                    <UInput
+                        v-model="search"
+                        icon="i-heroicons-magnifying-glass"
+                        placeholder="搜尋文章標題、內容..."
+                        size="lg"
+                        class="flex-1"
+                    />
+                    <USelect
+                        v-model="category"
+                        :options="[
+                            { label: '所有分類', value: '' },
+                            { label: '兩棲爬蟲類', value: '兩棲爬蟲類' },
+                            { label: '鳥類', value: '鳥類' },
+                            { label: '魚類', value: '魚類' },
+                            { label: '等足類', value: '等足類' },
+                            { label: '其它', value: '其它' },
+                        ]"
+                        size="lg"
+                        class="w-48"
+                    />
                 </div>
             </div>
+
             <!-- 部落格列表 -->
             <div class="mt-10 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div
@@ -82,9 +74,7 @@ const showedBlogs = computed(() => {
                             <span class="text-gray-500 text-sm">
                                 {{ new Date(blog.created_at).toLocaleDateString() }}
                             </span>
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">
-                                {{ blog.category }}
-                            </span>
+                            <UBadge color="green" size="sm">{{ blog.category }}</UBadge>
                         </div>
                         <div class="mt-2 flex justify-center">
                             <NuxtLink

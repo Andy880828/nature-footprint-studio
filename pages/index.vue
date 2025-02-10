@@ -202,11 +202,11 @@ const faqItems = [
         <img :src="bgLeaf" class="absolute size-96 z-[1] -left-20 rotate-180 -top-10" />
         <div class="max-w-2xl mx-auto mb-4 text-center">
             <p class="text-5xl font-bold flex items-center justify-center gap-2 pe-5">
-                <UIcon name="i-material-symbols-work" class="size-12" />業務介紹
+                <UIcon name="i-material-symbols-work" class="size-12" />服務介紹
             </p>
         </div>
         <div
-            class="mt-10 container px-4 mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 justify-center items-center relative z-[2]"
+            class="mt-10 container px-4 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-center items-center relative z-[2]"
         >
             <div
                 v-for="(business, index) in businesses"

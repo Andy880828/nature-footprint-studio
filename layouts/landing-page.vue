@@ -76,7 +76,7 @@ onMounted(() => {
         <div class="relative min-h-screen z-[2]">
             <!-- 導航欄 -->
             <div class="flex items-center justify-center absolute top-5 md:top-10 w-full px-auto">
-                <ul class="hidden md:flex items-center gap-10 lg:gap-40 text-white text-xl lg:text-2xl">
+                <ul class="hidden md:flex items-center gap-10 lg:gap-32 text-white text-xl lg:text-2xl">
                     <li>
                         <NuxtLink
                             to="/business"
@@ -184,8 +184,12 @@ onMounted(() => {
                             <img src="assets/images/icon.svg" alt="" />
                         </div>
                         <div class="flex flex-col gap-3 md:gap-5 items-center md:items-start justify-center">
-                            <h1 class="text-white text-5xl md:text-7xl lg:text-8xl font-bold">話蛇添足</h1>
-                            <h1 class="text-white text-4xl md:text-6xl lg:text-7xl font-bold">工作室</h1>
+                            <h1
+                                class="text-white tracking-tighter xl:tracking-normal text-5xl md:text-[3.3rem] lg:text-7xl font-bold"
+                            >
+                                話蛇添足
+                            </h1>
+                            <h1 class="text-white text-4xl md:text-5xl lg:text-7xl font-bold">工作室</h1>
                             <h1 class="text-white text-2xl md:text-3xl lg:text-4xl font-bold">
                                 Nature's Footprint Studio
                             </h1>
