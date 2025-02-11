@@ -1,5 +1,5 @@
 <script setup>
-import bgNews from '~/assets/images/news.webp';
+import bgNews from '@/assets/images/news.webp';
 // 利用我們寫好的Composable抓取API資料
 const supabase = useSupabase();
 // fetch消息

@@ -1,5 +1,5 @@
 <script setup>
-import bgHero from '~/assets/images/bg-hero.webp';
+import bgHero from '@/assets/images/bg-hero.webp';
 
 const props = defineProps({
     title: {
