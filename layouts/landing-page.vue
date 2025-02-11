@@ -8,6 +8,9 @@ const toggleMobileMenu = () => {
     isOpen.value = !isOpen.value;
 };
 
+// 工作詢問
+const isWorkQueryModalVisible = ref(false);
+
 // 背景圖片
 const supabase = useSupabase();
 const { data: pictures } = await supabase.from('picture').select('*');
@@ -34,7 +37,6 @@ const throttle = (fn, delay) => {
 };
 
 onMounted(() => {
-    handleScroll();
     // 預加載圖片
     bgArr.forEach((src) => {
         const img = new Image();
@@ -65,6 +67,7 @@ onMounted(() => {
 </script>
 
 <template>
+    <WorkQueryForm v-model="isWorkQueryModalVisible" />
     <div class="relative min-h-screen">
         <!-- 背景圖片 -->
         <div
@@ -201,7 +204,10 @@ onMounted(() => {
                             「 探索自然奧秘，追尋天地足跡。 」
                         </h1>
                         <!-- 工作詢問 -->
-                        <div class="flex items-center justify-center text-center mt-5 md:mt-0">
+                        <div
+                            class="flex items-center justify-center text-center mt-5 md:mt-0"
+                            @click="isWorkQueryModalVisible = true"
+                        >
                             <div
                                 class="bg-white text-green-800 px-6 md:px-10 py-2 rounded-xl cursor-pointer text-xl md:text-2xl hover:scale-105 hover:text-white hover:bg-green-800 transition-all duration-200"
                             >
