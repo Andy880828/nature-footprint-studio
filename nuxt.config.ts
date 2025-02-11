@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     },
 
     devtools: { enabled: true },
-    modules: ['@nuxt/ui', 'nuxt-swiper'],
+    modules: ['@nuxt/ui'],
 
     app: {
         head: {
