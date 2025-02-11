@@ -26,7 +26,7 @@ const showedBlogs = computed(() => {
 
 <template>
     <Hero title="部落格" icon="i-mdi-blogger" />
-    <section class="py-10 bg-gradient-to-b from-green-200 to-white">
+    <section class="py-10 bg-gradient-to-b from-green-100 to-white">
         <div class="container mx-auto px-4">
             <div class="max-w-5xl mx-auto space-y-6">
                 <!-- 搜尋/篩選區域 -->

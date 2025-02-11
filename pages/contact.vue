@@ -38,9 +38,7 @@ const socialMedia = [
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${bgImage})`,
         }"
     >
-        <div
-            class="relative bg-white/75 backdrop-blur-md rounded-2xl p-8 md:p-12 w-full max-w-4xl shadow-xl border border-white/20"
-        >
+        <div class="relative bg-white/75 rounded-2xl p-8 md:p-12 w-full max-w-4xl shadow-xl border border-white/20">
             <!-- 裝飾元素 -->
             <div
                 class="absolute -top-6 left-1/2 -translate-x-1/2 bg-green-800 text-white px-8 py-3 rounded-full shadow-lg"

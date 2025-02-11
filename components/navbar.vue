@@ -10,7 +10,6 @@ const toggleMobileMenu = () => {
     isOpen.value = !isOpen.value;
 };
 const isWorkQueryModalVisible = ref(false);
-const route = useRoute();
 </script>
 
 <template>
@@ -80,12 +79,12 @@ const route = useRoute();
                         </div>
                     </NuxtLink>
                     <div class="p-2">
-                        <div
+                        <button
                             class="bg-white text-green-800 p-2 flex justify-center items-center rounded-xl transition-colors hover:bg-green-800 hover:text-white"
                             @click="isWorkQueryModalVisible = true"
                         >
                             <span>工作詢問</span><span class="text-xs ms-2">Work Inquiry</span>
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -147,13 +146,13 @@ const route = useRoute();
             </div>
             <!-- 工作詢問 -->
             <div class="items-center gap-4 hidden lg:flex">
-                <div
+                <button
                     class="bg-white text-green-800 px-4 py-2 rounded-xl cursor-pointer text-lg hover:scale-105 hover:text-white hover:bg-green-800 transition-all duration-200"
                     @click="isWorkQueryModalVisible = true"
                 >
                     <p>工作詢問</p>
                     <p class="text-xs">Work Inquiry</p>
-                </div>
+                </button>
             </div>
         </nav>
     </header>

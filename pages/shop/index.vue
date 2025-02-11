@@ -41,7 +41,7 @@ const isFilterOpen = ref(false);
 <template>
     <Hero title="購物專區" icon="i-icon-park-outline-ad-product" />
 
-    <section class="py-10 bg-gradient-to-b from-green-200 to-white">
+    <section class="py-10 bg-gradient-to-b from-green-100 to-white">
         <div class="container mx-auto px-4">
             <div class="flex gap-10 justify-center items-start">
                 <div class="hidden md:block md:w-1/3 lg:w-1/4 xl:w-1/5 bg-white/50 rounded-lg p-4">

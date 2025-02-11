@@ -124,7 +124,7 @@ const currentBusiness = computed(() => businesses.find((b) => b.id === activeTab
 <template>
     <Hero title="服務項目" icon="i-material-symbols-work" />
 
-    <section class="py-10 bg-gradient-to-b from-green-200 to-white min-h-screen">
+    <section class="py-10 bg-gradient-to-b from-green-100 to-white min-h-screen">
         <div class="container mx-auto px-4">
             <!-- 服務項目標籤列 -->
             <div class="flex flex-wrap justify-center gap-4 mb-10">
