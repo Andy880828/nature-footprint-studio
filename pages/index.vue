@@ -1,11 +1,11 @@
 <script setup>
-import bg1 from '~/assets/images/bg-section-1.webp';
-import bgLeaf from '~/assets/images/leaf.svg';
-import business1 from '~/assets/images/business-1.webp';
-import business2 from '~/assets/images/business-2.webp';
-import business3 from '~/assets/images/business-3.webp';
-import business4 from '~/assets/images/business-4.webp';
-import bgFaq from '~/assets/images/bg-faq.webp';
+import bg1 from '@/assets/images/bg-section-1.webp';
+import bgLeaf from '@/assets/images/leaf.svg';
+import business1 from '@/assets/images/business-1.webp';
+import business2 from '@/assets/images/business-2.webp';
+import business3 from '@/assets/images/business-3.webp';
+import business4 from '@/assets/images/business-4.webp';
+import bgFaq from '@/assets/images/bg-faq.webp';
 
 definePageMeta({
     layout: 'landing-page',

@@ -1,5 +1,5 @@
 <script setup>
-import bgNews from '~/assets/images/news.webp';
+import bgNews from '@/assets/images/news.webp';
 const { id } = useRoute().params;
 const supabase = useSupabase();
 const { data: news } = await supabase.from('news').select('*').eq('id', id).single();

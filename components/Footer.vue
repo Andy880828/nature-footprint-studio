@@ -1,8 +1,8 @@
 <script setup>
-import bg from './assets/images/bg-footer.webp';
-import facebook from './assets/images/icon-facebook.svg';
-import instagram from './assets/images/icon-instagram.svg';
-import threads from './assets/images/icon-threads.svg';
+import bg from '@/assets/images/bg-footer.webp';
+import facebook from '@/assets/images/icon-facebook.svg';
+import instagram from '@/assets/images/icon-instagram.svg';
+import threads from '@/assets/images/icon-threads.svg';
 </script>
 
 <template>

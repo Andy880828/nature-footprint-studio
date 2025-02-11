@@ -34,6 +34,7 @@ const throttle = (fn, delay) => {
 };
 
 onMounted(() => {
+    handleScroll();
     // 預加載圖片
     bgArr.forEach((src) => {
         const img = new Image();
@@ -47,12 +48,12 @@ onMounted(() => {
 
     // 使用 throttle 包裝滾動事件處理函數
     const handleScroll = throttle(() => {
-        if (window.scrollY > 180) {
+        if (window.scrollY > 130) {
             showNavbar.value = true;
         } else {
             showNavbar.value = false;
         }
-    }, 200); // 設定 200ms 的延遲
+    }, 50); // 設定 50ms 的延遲
 
     window.addEventListener('scroll', handleScroll);
 

@@ -1,5 +1,5 @@
 <script setup>
-import bgImage from '~/assets/images/contact.webp';
+import bgImage from '@/assets/images/contact.webp';
 const contactInfo = [
     {
         icon: 'i-material-symbols-mail',
