@@ -1,7 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 import openVariant from './assets/plugins/openVariant.js';
 export default {
-    content: [],
+    content: [
+        './components/**/*.{js,vue,ts}',
+        './layouts/**/*.vue',
+        './pages/**/*.vue',
+        './plugins/**/*.{js,ts}',
+        './nuxt.config.{js,ts}',
+        './app.vue',
+    ],
     theme: {
         extend: {
             animation: {

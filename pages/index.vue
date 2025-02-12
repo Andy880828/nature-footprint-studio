@@ -110,6 +110,7 @@ const faqItems = [
                     v-for="(news, idx) in orderedNews"
                     :key="idx"
                     class="py-4 px-4 rounded-xl hover:bg-gray-50/50 transition-colors duration-300 group"
+                    data-aos="fade-down"
                 >
                     <div class="flex items-center gap-4">
                         <div class="shrink-0">
@@ -150,6 +151,7 @@ const faqItems = [
                 <NuxtLink
                     class="relative group inline-block py-4 px-7 font-semibold text-green-900 hover:text-white rounded-xl shadow-sm bg-white transition duration-300 overflow-hidden"
                     to="/news"
+                    data-aos="fade-down"
                 >
                     <div
                         class="absolute top-0 right-full size-full bg-green-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"
@@ -212,6 +214,7 @@ const faqItems = [
                 v-for="(business, index) in businesses"
                 :key="index"
                 class="rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300"
+                data-aos="fade-down"
             >
                 <div class="h-[300px] relative overflow-hidden">
                     <img
@@ -244,6 +247,7 @@ const faqItems = [
             <NuxtLink
                 class="relative group inline-block ring-2 ring-green-900 ring-offset-2 py-3 px-6 font-semibold text-green-900 hover:text-white rounded-xl shadow-sm bg-white transition duration-300 overflow-hidden"
                 to="/business"
+                data-aos="fade-down"
             >
                 <div
                     class="absolute top-0 right-full size-full bg-green-900 transform group-hover:translate-x-full group-hover:scale-102 transition duration-500"
@@ -316,18 +320,20 @@ const faqItems = [
     </section>
     <!-- 創辦人的話 -->
     <section class="py-10 md:py-20 relative z-0 overflow-hidden flex flex-col justify-center items-center">
-        <div class="container px-4 mx-auto rounded-full md:w-[50%]">
+        <div class="container px-4 mx-auto rounded-full md:w-[50%]" data-aos="fade-down">
             <img src="~/assets/images/founder.webp" alt="founder" class="w-full object-cover rounded-full" />
         </div>
-        <blockquote class="mt-8 mb-4 pl-4 md:pl-8 py-4 mx-4 md:mx-10 text-center">
-            <p class="text-xl md:text-3xl font-bold">
-                『
-                "話"代表述說，"添"代表加入，話蛇添足，意味著不斷傳達野生動物的美好給大眾，我相信透過實際的探索與教育，可以讓更多人了解自然，進而珍惜我們的環境。
-                』
-            </p>
-        </blockquote>
-        <p class="text-gray-500 text-lg md:text-xl">陳軒齊</p>
-        <p class="text-gray-500 text-base md:text-lg mt-2">話蛇添足工作室 創辦人</p>
+        <div class="text-center" data-aos="fade-down">
+            <blockquote class="mt-8 mb-4 pl-4 md:pl-8 py-4 mx-4 md:mx-10 text-center">
+                <p class="text-xl md:text-3xl font-bold">
+                    『
+                    "話"代表述說，"添"代表加入，話蛇添足，意味著不斷傳達野生動物的美好給大眾，我相信透過實際的探索與教育，可以讓更多人了解自然，進而珍惜我們的環境。
+                    』
+                </p>
+            </blockquote>
+            <p class="text-gray-500 text-lg md:text-xl">陳軒齊</p>
+            <p class="text-gray-500 text-base md:text-lg mt-2">話蛇添足工作室 創辦人</p>
+        </div>
     </section>
 </template>
 

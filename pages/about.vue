@@ -18,7 +18,7 @@ import bgLeaf from '@/assets/images/leaf.svg';
                     <img
                         :src="me"
                         alt="me"
-                        class="relative w-full h-[600px] object-cover object-top rounded-3xl shadow-xl"
+                        class="relative w-full h-[600px] object-cover object-middle rounded-3xl shadow-xl"
                         draggable="false"
                     />
                 </div>
@@ -72,7 +72,7 @@ import bgLeaf from '@/assets/images/leaf.svg';
                 <p class="text-lg md:text-xl text-gray-600">多年來在不同生態領域的專業累積與實務經驗</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 content-center">
-                <div class="relative group">
+                <div class="relative group" data-aos="fade-down">
                     <div
                         class="absolute inset-0 bg-gradient-to-br from-green-100 to-emerald-50 rounded-full transform transition-transform group-hover:scale-105"
                     ></div>
@@ -91,7 +91,7 @@ import bgLeaf from '@/assets/images/leaf.svg';
                     </div>
                 </div>
 
-                <div class="relative group">
+                <div class="relative group" data-aos="fade-down">
                     <div
                         class="absolute inset-0 bg-gradient-to-br from-blue-100 to-sky-50 rounded-full transform transition-transform group-hover:scale-105"
                     ></div>
@@ -110,7 +110,7 @@ import bgLeaf from '@/assets/images/leaf.svg';
                     </div>
                 </div>
 
-                <div class="relative group">
+                <div class="relative group" data-aos="fade-down">
                     <div
                         class="absolute inset-0 bg-gradient-to-br from-amber-100 to-yellow-50 rounded-full transform transition-transform group-hover:scale-105"
                     ></div>
@@ -129,7 +129,7 @@ import bgLeaf from '@/assets/images/leaf.svg';
                     </div>
                 </div>
 
-                <div class="relative group">
+                <div class="relative group" data-aos="fade-down">
                     <div
                         class="absolute inset-0 bg-gradient-to-br from-emerald-100 to-green-50 rounded-full transform transition-transform group-hover:scale-105"
                     ></div>
@@ -164,7 +164,7 @@ import bgLeaf from '@/assets/images/leaf.svg';
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 content-center">
                 <!-- 學歷背景 -->
-                <div>
+                <div data-aos="fade-down">
                     <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
                         <UIcon name="i-material-symbols-school" class="size-8 text-green-600" />
                         學歷背景
@@ -188,7 +188,7 @@ import bgLeaf from '@/assets/images/leaf.svg';
                 </div>
 
                 <!-- 工作經驗 -->
-                <div>
+                <div data-aos="fade-down">
                     <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
                         <UIcon name="i-material-symbols-work" class="size-8 text-green-600" />
                         工作與實習經驗
@@ -237,7 +237,7 @@ import bgLeaf from '@/assets/images/leaf.svg';
                 </h2>
                 <p class="text-xl text-gray-600">分享生態知識，推廣環境教育</p>
             </div>
-            <div class="space-y-4 max-w-4xl mx-auto">
+            <div class="space-y-4 max-w-4xl mx-auto" data-aos="fade-down">
                 <UAccordion
                     :items="[
                         {
@@ -348,6 +348,7 @@ import bgLeaf from '@/assets/images/leaf.svg';
                     ]"
                     :key="index"
                     class="bg-white p-6 rounded-3xl shadow-xl card-hover"
+                    data-aos="fade-down"
                 >
                     <h3 class="font-bold text-xl mb-4">{{ issue.title }}</h3>
                     <p v-if="issue.org" class="text-gray-600 mb-2">{{ issue.org }}</p>
@@ -395,6 +396,7 @@ import bgLeaf from '@/assets/images/leaf.svg';
                             ]"
                             :key="index"
                             class="bg-white p-6 rounded-3xl shadow-xl card-hover"
+                            data-aos="fade-down"
                         >
                             <div class="flex items-start gap-6">
                                 <div class="bg-green-100 px-6 py-3 rounded-xl">
@@ -420,7 +422,7 @@ import bgLeaf from '@/assets/images/leaf.svg';
                         <p class="text-xl text-gray-600">學術研究成果與發表</p>
                     </div>
                     <div class="space-y-8">
-                        <div class="bg-white p-8 rounded-3xl shadow-xl card-hover">
+                        <div class="bg-white p-8 rounded-3xl shadow-xl card-hover" data-aos="fade-down">
                             <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
                                 <UIcon name="i-material-symbols-book" class="size-8 text-green-600" />
                                 碩士論文
@@ -431,7 +433,7 @@ import bgLeaf from '@/assets/images/leaf.svg';
                                 國立中山大學海洋科學系碩士論文。
                             </p>
                         </div>
-                        <div class="bg-white p-8 rounded-3xl shadow-xl card-hover">
+                        <div class="bg-white p-8 rounded-3xl shadow-xl card-hover" data-aos="fade-down">
                             <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
                                 <UIcon name="i-material-symbols-description" class="size-8 text-green-600" />
                                 研討會與學術發表

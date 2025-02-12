@@ -60,6 +60,7 @@ const showedBlogs = computed(() => {
                     v-for="blog in showedBlogs"
                     :key="blog.id"
                     class="flex flex-col shadow-sm rounded-xl hover:bg-gradient-to-t hover:from-green-100 hover:to-white/80 hover:shadow-lg transition-all duration-300"
+                    data-aos="fade-down"
                 >
                     <div class="relative m-3">
                         <img

@@ -1,11 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    css: ['@/assets/css/tailwind.css'],
     future: {
         compatibilityVersion: 4,
     },
 
     devtools: { enabled: true },
-    modules: ['@nuxt/ui'],
+    modules: ['@nuxt/ui', 'nuxt-aos', '@nuxtjs/tailwindcss'],
 
     app: {
         head: {

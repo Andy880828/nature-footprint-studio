@@ -106,6 +106,7 @@ const isFilterOpen = ref(false);
                             :key="product.id"
                             :to="`/shop/${product.id}`"
                             class="group rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                            data-aos="fade-down"
                         >
                             <div class="aspect-square overflow-hidden">
                                 <img

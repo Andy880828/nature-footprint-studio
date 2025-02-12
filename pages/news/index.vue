@@ -37,6 +37,7 @@ const pageTotal = computed(() => orderedNews.value?.length || 0);
                     v-for="(news, idx) in paginatedNews"
                     :key="idx"
                     class="bg-white/80 shadow-md rounded-xl p-6 hover:shadow-lg transition-shadow duration-300"
+                    data-aos="fade-down"
                 >
                     <div class="flex flex-col md:flex-row md:gap-6 gap-2">
                         <div class="md:w-1/4">
