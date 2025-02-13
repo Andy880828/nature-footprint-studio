@@ -78,7 +78,7 @@ const isWorkQueryModalVisible = ref(false);
                             <span>聯絡資訊</span><span class="text-xs ms-2">Contact</span>
                         </div>
                     </NuxtLink>
-                    <div class="p-2">
+                    <div class="p-2 flex justify-center items-center">
                         <button
                             class="bg-white text-green-800 p-2 flex justify-center items-center rounded-xl transition-colors hover:bg-green-800 hover:text-white"
                             @click="isWorkQueryModalVisible = true"
