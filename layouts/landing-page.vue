@@ -1,4 +1,6 @@
 <script setup>
+import { useWindowScroll } from '@vueuse/core';
+
 // 向下滾動出現navbar
 const showNavbar = ref(false);
 
@@ -10,6 +12,12 @@ const toggleMobileMenu = () => {
 
 // 工作詢問
 const isWorkQueryModalVisible = ref(false);
+
+// 使用 VueUse 的 useWindowScroll
+const { y: scrollY } = useWindowScroll();
+
+// 監測滾動位置的 computed
+const isAtTop = computed(() => scrollY.value <= 130);
 
 // 背景圖片
 const supabase = useSupabase();
@@ -24,18 +32,6 @@ const changeBg = () => {
     }
 };
 
-// 添加 throttle 函數
-const throttle = (fn, delay) => {
-    let lastTime = 0;
-    return function (...args) {
-        const now = new Date().getTime();
-        if (now - lastTime >= delay) {
-            fn.apply(this, args);
-            lastTime = now;
-        }
-    };
-};
-
 onMounted(() => {
     // 預加載圖片
     bgArr.forEach((src) => {
@@ -48,20 +44,17 @@ onMounted(() => {
         changeBg();
     }, 5000);
 
-    // 使用 throttle 包裝滾動事件處理函數
-    const handleScroll = throttle(() => {
-        if (window.scrollY > 130) {
-            showNavbar.value = true;
-        } else {
-            showNavbar.value = false;
-        }
-    }, 50); // 設定 50ms 的延遲
-
-    window.addEventListener('scroll', handleScroll);
+    // 監聽滾動位置變化
+    watch(
+        isAtTop,
+        (value) => {
+            showNavbar.value = !value;
+        },
+        { immediate: true }
+    );
 
     onUnmounted(() => {
         clearInterval(intervalId);
-        window.removeEventListener('scroll', handleScroll);
     });
 });
 </script>
@@ -78,8 +71,11 @@ onMounted(() => {
         <div class="absolute inset-0 bg-black/70 z-[1]"></div>
         <!-- 內容層 -->
         <div class="relative min-h-screen z-[2]">
-            <!-- 導航欄 -->
-            <div class="flex items-center justify-center absolute top-5 md:top-10 w-full px-auto">
+            <!-- 頂部導航欄，只在頂部時顯示 -->
+            <div
+                v-show="isAtTop"
+                class="flex items-center justify-center absolute top-5 md:top-10 w-full px-auto transition-opacity duration-300"
+            >
                 <ul class="hidden md:flex items-center gap-10 lg:gap-32 text-white text-xl lg:text-2xl">
                     <li>
                         <NuxtLink
