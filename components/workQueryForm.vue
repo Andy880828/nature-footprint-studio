@@ -1,21 +1,22 @@
 <script setup>
-// const sendEmail = () => {
-//     const form = document.querySelector('#form');
-//     emailjs
-//         .sendForm('service_uhk8dgb', 'personal_page', form, {
-//             publicKey: 'zFWZ8gmCOI6hd493I',
-//         })
-//         .then(
-//             () => {
-//                 isModalVisible.value = false;
-//                 console.log('發送成功!');
-//             },
-//             (error) => {
-//                 isModalVisible.value = false;
-//                 console.log('發送失敗...', error.text);
-//             }
-//         );
-// };
+import emailjs from '@emailjs/browser';
+const sendEmail = () => {
+    const form = document.querySelector('#form');
+    emailjs
+        .sendForm('service_csy44dj', 'nature_footprint', form, {
+            publicKey: 'kdBCVBxZiUa25IXT5',
+        })
+        .then(
+            () => {
+                isModalVisible.value = false;
+                console.log('發送成功!');
+            },
+            (error) => {
+                isModalVisible.value = false;
+                console.log('發送失敗...', error.text);
+            }
+        );
+};
 </script>
 
 <template>

@@ -5,7 +5,7 @@ const { data: blog } = await supabase.from('blog').select('*').eq('id', id).sing
 </script>
 
 <template>
-    <section class="py-12 bg-gradient-to-b from-green-200 to-white">
+    <section class="py-12 bg-gradient-to-b from-green-100 to-white">
         <div class="container w-full md:w-4/5 mx-auto px-4 flex flex-col items-center gap-4">
             <NuxtLink to="/blog" class="self-start mb-4">
                 <button class="inline-flex items-center text-green-700 hover:text-green-900 font-semibold">
