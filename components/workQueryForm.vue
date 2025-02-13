@@ -1,18 +1,42 @@
 <script setup>
 import emailjs from '@emailjs/browser';
+import { computed } from 'vue';
+
+const props = defineProps({
+    modelValue: {
+        type: Boolean,
+        required: true,
+    },
+});
+
+const emit = defineEmits(['update:modelValue']);
+
+const isModalOpen = computed({
+    get() {
+        return props.modelValue;
+    },
+    set(newValue) {
+        emit('update:modelValue', newValue);
+    },
+});
+
 const sendEmail = () => {
-    const form = document.querySelector('#form');
+    const form = document.querySelector('form'); // 改為直接選擇 form 元素
+
     emailjs
-        .sendForm('service_csy44dj', 'nature_footprint', form, {
-            publicKey: 'kdBCVBxZiUa25IXT5',
-        })
+        .sendForm(
+            'service_csy44dj', // 您的 Service ID
+            'nature_footprint', // 您的 Template ID
+            form,
+            'kdBCVBxZiUa25IXT5' // 您的 Public Key
+        )
         .then(
             () => {
-                isModalVisible.value = false;
                 console.log('發送成功!');
+                isModalOpen.value = false;
+                form.reset(); // 清空表單
             },
             (error) => {
-                isModalVisible.value = false;
                 console.log('發送失敗...', error.text);
             }
         );
@@ -20,7 +44,7 @@ const sendEmail = () => {
 </script>
 
 <template>
-    <UModal :ui="{ overlay: { background: 'bg-black/50' }, width: 'max-w-lg' }">
+    <UModal v-model="isModalOpen" :ui="{ overlay: { background: 'bg-black/50' }, width: 'max-w-lg' }">
         <UCard>
             <!-- 標題和社群媒體連結 -->
             <div class="text-center space-y-4">

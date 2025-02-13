@@ -56,7 +56,19 @@ export default defineNuxtConfig({
                     name: 'twitter:image',
                     content: '/landing.webp',
                 },
+                { name: 'author', content: '話蛇添足工作室' },
+                {
+                    name: 'keywords',
+                    content: '生態調查,環境教育,兩棲爬蟲,魚類,十足類,鳥類,夜間導覽,自然教育,生態工作室',
+                },
+                { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
+                { name: 'google', content: 'notranslate' },
+                {
+                    name: 'robots',
+                    content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+                },
             ],
+            link: [{ rel: 'canonical', href: 'https://nature-footprint-studio.vercel.app' }],
         },
     },
 
