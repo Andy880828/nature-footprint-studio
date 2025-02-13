@@ -1,1 +1,3 @@
-
+User-agent: *
+Allow: /
+Sitemap: https://nature-footprint-studio.vercel.app//sitemap.xml

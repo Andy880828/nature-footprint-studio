@@ -6,11 +6,16 @@ export default defineNuxtConfig({
     },
 
     devtools: { enabled: true },
-    modules: ['@nuxt/ui', 'nuxt-aos', '@nuxtjs/tailwindcss'],
+    modules: ['@nuxt/ui', 'nuxt-aos', '@nuxtjs/tailwindcss', '@nuxtjs/sitemap'],
+
+    site: {
+        url: 'https://nature-footprint-studio.vercel.app',
+        name: '話蛇添足工作室',
+    },
 
     app: {
         head: {
-            title: '話蛇天足工作室',
+            title: '話蛇添足工作室',
             meta: [
                 {
                     name: 'description',
@@ -19,13 +24,14 @@ export default defineNuxtConfig({
                 },
                 {
                     property: 'og:title',
-                    content: '話蛇天足工作室',
+                    content: '話蛇添足工作室',
                 },
                 {
                     property: 'og:description',
                     content:
                         '一起探索自然的饋贈，提供生態專業服務，包括兩棲爬蟲、魚類、十足類、鳥類相關的生態課程，也提供生態調查及夜間導覽服務，歡迎進入網頁參訪',
                 },
+                { name: 'robots', content: 'index, follow' },
                 {
                     property: 'og:image',
                     content: '/landing.webp',
