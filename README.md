@@ -1,6 +1,5 @@
-# Nuxt Minimal Starter
-
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# 話蛇添足工作室
+軒齊生態工作室的網站，僅供履歷投遞公司參考，照片皆具版權，翻印必究
 
 ## Setup
 
